@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<style>
+		.button_key{ 
+         background-color:#A9A9A9; 
+         color: black; 
+         border: solid black 2px; 
+         width:100%; 
+         } 
+		input[type="text"] 
+         { 
+         background-color:white; 
+         border: solid black 2px; 
+         width:100%;
+         } 
+		td{ background-color:#A9A9A9; }
+		
+		</style>
+	</head>
+	<body>
+		<!-- Built with Flask -->
+		<div>
+		<h1>Calculator</h1>
+		
+		<table style="width:12%" border=1>
+			<tr>
+				<form>
+					<td colspan=3><input id="inp" name="inp" type="text" value="" readonly></td>
+					<td><input class="button_key" type="submit" value="="></td>
+				</form>
+			</tr>
+			<tr>
+				<td> <button class="button_key" type="button" onclick="cl()">C</button> </td>
+				<td> <button class="button_key" type="button" onclick="backspace()">del</button> </td>
+				<td> <button class="button_key" type="button" value='(' onclick="btn_key(this.value)">(</button> </td>
+				<td> <button class="button_key" type="button" value=')' onclick="btn_key(this.value)">)</button> </td>
+			</tr>
+			<tr>
+				<td> <button class="button_key" type="button" value=7 onclick=btn_key(this.value)>7</button> </td>
+				<td> <button class="button_key" type="button" value=8 onclick="btn_key(this.value)">8</button> </td>
+				<td> <button class="button_key" type="button" value=9 onclick="btn_key(this.value)">9</button> </td>
+				<td> <button class="button_key" type="button" value='+' onclick="btn_key(this.value)">+</button> </td>
+			</tr>
+			<tr>
+				<td> <button class="button_key" type="button" value=4 onclick="btn_key(this.value)">4</button> </td>
+				<td> <button class="button_key" type="button" value=5 onclick="btn_key(this.value)">5</button> </td>
+				<td> <button class="button_key" type="button" value=6 onclick="btn_key(this.value)">6</button> </td>
+				<td> <button class="button_key" type="button" value='-' onclick="btn_key(this.value)">-</button> </td>
+			</tr>
+			<tr>
+				<td> <button class="button_key" type="button" value=1 onclick="btn_key(this.value)">1</button> </td>
+				<td> <button class="button_key" type="button" value=2 onclick="btn_key(this.value)">2</button> </td>
+				<td> <button class="button_key" type="button" value=3 onclick="btn_key(this.value)">3</button> </td>
+				<td> <button class="button_key" type="button" value='/' onclick="btn_key(this.value)">/</button> </td>
+			</tr>
+			<tr>
+				<td> <button class="button_key" type="button" ></button> </td>
+				<td> <button class="button_key" type="button" value=0 onclick="btn_key(this.value)">0</button> </td>
+				<td> <button class="button_key" type="button" value='.' onclick="btn_key(this.value)">.</button> </td>
+				<td> <button class="button_key" type="button" value='*' onclick="btn_key(this.value)">*</button> </td>
+			</tr>
+			
+		</table>
+
+		<main>
+		{% block main %}
+			<p>Answer:</p>
+		{% endblock %}
+		</main>
+		</div>
+		<script>
+			function btn_key(val){
+				var inp = document.getElementById("inp");
+				inp.value += val;
+			}
+			function cl(){
+				var inp = document.getElementById("inp");
+				inp.value = "";
+			}
+			function backspace(){
+				var inp = document.getElementById("inp");
+				inp.value = inp.value.slice(0,-1);
+			}
+			
+		</script>
+	</body>
+</html>

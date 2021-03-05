@@ -1,0 +1,9 @@
+Soal ini vulnerable terhadap template injection
+
+Untuk menjalankan program:
+$ python -m venv venv
+$ . venv/bin/activate
+$ python -m pip install -r requirements.txt
+$ export FLASK_APP=app.py (linux)
+$ set FLASK_APP=app.py (windows)
+$ python -m flask run
